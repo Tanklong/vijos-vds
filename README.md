@@ -1,7 +1,7 @@
 vijos-cdn-server
 ================
 
-vijos-cdn-server is a very simple HTTP static nodejs server application.
+vijos-cdn-server is a very simple Node.js HTTP static server application.
 
 It is now being used in [Vijos](https://vijos.org) CDN.
 
