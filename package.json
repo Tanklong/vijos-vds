@@ -1,0 +1,17 @@
+{
+	"name":"vijos-cdn",
+	"author":{
+		"name": "Breezewish"
+	},
+	"main": "./app.js",
+	"version":"0.2.0",
+	"dependencies":{
+		"http-proxy":"",
+		"express":"",
+		"express-rewrite":"",
+		"gzippo":"",
+		"uglifycss":"",
+		"uglify-js":"",
+		"spdy":""
+	}
+}
