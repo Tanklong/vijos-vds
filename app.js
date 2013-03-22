@@ -36,7 +36,7 @@ process.on('uncaughtException', global.dumpError);
 //=================================
 
 var log = require(LibDir + 'log.js');
-global.Logger = log.create(log.INFO, Config.Log.LogFile);
+global.Logger = log.create(log.INFO, Config.FileLocation.Log);
 
 Logger.info('Server started.');
 

@@ -2,43 +2,100 @@ var Config = global.Config = {};
 
 Config.Dir =
 {
-	Static:	BaseDir + '../wwwroot',
-	Runtime: BaseDir + '../runtime',
+	//static file directory
+	Static:		BaseDir + '../wwwroot',
+	
+	//server runtime directory (will generate logs & cache)
+	Runtime:	BaseDir + '../runtime',
 }
-Config.SSL =
-{
-	Key:	BaseDir + '../cert/www_vijos_org.key',
-	Cert:	BaseDir + '../cert/www_vijos_org.crt',
-	CA:		BaseDir + '../cert/ca-bundle.crt'
-}
+
 Config.Port =
 {
+	//in this case, our ReverseProxy on port 80 will pass requests to 81
 	HTTP:	81,
 	HTTPS:	443
 }
-Config.Headers =
+
+//static server configuration
+Config.Static =
 {
-	MaxAge:	1209600000
+	NotFound:
+	{
+		//if enabled, requests will be redirected if notfound
+		Redirect:	true,
+		Host:		'//vijos.org'
+	},
+	Forbid:
+	{
+		//which request should be forbidden
+		Match:		/(^\/\.svn|\.php$)/i,
+		
+		//if enabled, requests will be redirected if forbidden
+		Redirect:	true,
+		Host:		'//vijos.org'
+	},
+	Rewrite:
+	{
+		//these resources will be rewrited
+		'/bdsitemap.txt':	'/bdsitemap-cdn.txt'
+	}
 }
-Config.Cache =
+
+//SSL configuration
+Config.SSL =
 {
-	DBFile:	Config.Dir.Runtime + '/cache.json'
+	Enabled:	true,
+	Key:		BaseDir + '../cert/key.key',
+	Cert:		BaseDir + '../cert/cert.crt',
+	CA:			BaseDir + '../cert/ca.crt'
 }
-Config.Log =
+
+//Runtime file locations
+Config.FileLocation =
 {
-	LogFile: Config.Dir.Runtime + '/log.log'
+	DBCache:	Config.Dir.Runtime + '/cache.json',
+	Log:		Config.Dir.Runtime + '/log.log'
 }
-Config.GZip = 
+
+Config.Match = 
 {
-	Pattern: /((text\/(plain|css|xml|javascript))|(application\/(json|x\-javascript|xml)))/
+	//(static server) gzip match
+	GZipMime:	/((text\/(plain|css|xml|javascript))|(application\/(json|x\-javascript|xml)))/,
+	
+	//(proxy server) staticize match
+	StaticExt:	/\.(js|css|png|gif|jpg)$/i
 }
+
+//Reverse Proxy configuration
 Config.Proxy =
 {
 	Enabled:	true,
 	Port:		80,
 	Router: 
 	{
-		'www.vijos.org': '127.0.0.1:81',
-		'cdn.vijos.org': '127.0.0.1:81',
+		//proxy rules table
+		'www.vijos.org':	'127.0.0.1:81',
+		'cdn.vijos.org':	'127.0.0.1:81',
+		'ch.vijos.org':		'121.28.10.101:777',
+		'contesthunt.tk':	'121.28.10.101:777'
+	},
+	Headers:
+	{
+		//set or unset headers (null=unset)
+		'server':		'Vijos-Server',
+		'x-powered-by':	null
+	},
+	Staticize:
+	{
+		Target:	'www.vijos.org',
+		
+		List:
+		[{
+			//requests match to the Host and Config.Match.StaticExt
+			//will be rewrited as requesting from Config.Proxy.Staticize.Target,
+			//so it will be handled by TARGET static server
+			Hosts:	['ch.vijos.org', 'contesthunt.tk'],
+			Prefix:	'/contesthunter'
+		}]
 	}
 }

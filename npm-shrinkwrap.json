@@ -1,9 +1,9 @@
 {
   "name": "vijos-cdn",
-  "version": "0.0.1",
+  "version": "0.2.1",
   "dependencies": {
     "http-proxy": {
-      "version": "0.9.1",
+      "version": "0.10.0",
       "dependencies": {
         "colors": {
           "version": "0.6.0-1"
@@ -35,7 +35,7 @@
               "version": "0.3.5"
             },
             "ncp": {
-              "version": "0.2.6"
+              "version": "0.2.7"
             },
             "rimraf": {
               "version": "1.0.9"
@@ -101,9 +101,6 @@
         }
       }
     },
-    "express-rewrite": {
-      "version": "0.0.3"
-    },
     "gzippo": {
       "version": "0.2.0",
       "dependencies": {
@@ -130,10 +127,10 @@
       "version": "0.0.5"
     },
     "uglify-js": {
-      "version": "2.2.4",
+      "version": "2.2.5",
       "dependencies": {
         "source-map": {
-          "version": "0.1.8",
+          "version": "0.1.14",
           "dependencies": {
             "amdefine": {
               "version": "0.0.4"
@@ -151,7 +148,7 @@
       }
     },
     "spdy": {
-      "version": "1.4.5"
+      "version": "1.5.0"
     }
   }
 }
