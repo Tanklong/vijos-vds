@@ -45,11 +45,8 @@ Logger.info('Server started.');
 require(LibDir + 'extend.js');
 require(LibDir + 'server.js');
 require(LibDir + 'proxy.js');
-require(LibDir + 'compressor.js');
 
 //=================================
-
-Compressor.initialize();
 
 if (Config.Proxy.Enabled)
 	Proxy.initialize();

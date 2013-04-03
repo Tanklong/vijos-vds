@@ -74,10 +74,13 @@ Config.Proxy =
 	Router: 
 	{
 		//proxy rules table
+		'svn.vijos.org':	'127.0.0.1:2222',
+		'bj80.vijos.org':	'127.0.0.1:81',
+		'hnsdfz.vijos.org':	'127.0.0.1:81',
 		'www.vijos.org':	'127.0.0.1:81',
 		'cdn.vijos.org':	'127.0.0.1:81',
-		'ch.vijos.org':		'121.28.10.101:777',
-		'contesthunt.tk':	'121.28.10.101:777'
+		'www.ch.vijos.org':	'121.28.10.101:777',
+		'ch.vijos.org':		'121.28.10.101:777'
 	},
 	Headers:
 	{

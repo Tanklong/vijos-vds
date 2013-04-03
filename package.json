@@ -1,16 +1,13 @@
 {
-	"name":"vijos-cdn",
-	"author":{
-		"name": "Breezewish"
-	},
-	"main": "./app.js",
-	"version":"0.2.1",
-	"dependencies":{
-		"http-proxy":"",
-		"express":"",
-		"gzippo":"",
-		"uglifycss":"",
-		"uglify-js":"",
-		"spdy":""
-	}
+    "name": "vijos-dds",
+    "author": "Breezewish",
+    "main": "app.js",
+    "version": "0.2.2",
+    "dependencies": {
+        "http-proxy": "",
+        "express": "",
+        "express-minify": "",
+        "gzippo": "",
+        "spdy": ""
+    }
 }
