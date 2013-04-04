@@ -6,9 +6,8 @@
     "dependencies": {
         "http-proxy": "",
         "express": "",
-        "ejs": "",
         "express-minify": "",
-        "gzippo": "",
+        "ejs": "",
         "spdy": ""
     }
 }

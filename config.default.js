@@ -4,7 +4,7 @@ Config.Dir =
 {
 	//static file directory
 	Static:		BaseDir + '../wwwroot',
-	
+	StaticCache: BaseDir + '../cache',
 	//server runtime directory (will generate logs & cache)
 	Runtime:	BaseDir + '../runtime',
 }
@@ -52,7 +52,6 @@ Config.SSL =
 //Runtime file locations
 Config.FileLocation =
 {
-	DBCache:	Config.Dir.Runtime + '/cache.json',
 	Log:		Config.Dir.Runtime + '/log.log'
 }
 
