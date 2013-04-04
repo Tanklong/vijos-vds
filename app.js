@@ -36,17 +36,20 @@ if (Cluster.isMaster)
 		}
 	})();
 
-    var cpuCount = require('os').cpus().length;
+	var cpuCount = require('os').cpus().length;
 
 	Logger.info('Master started.');
 
-    for (var i = 0; i < cpuCount; i++)
-    {
-        Cluster.fork();
-    }
+	for (var i = 0; i < cpuCount; i++)
+	{
+		setTimeout(function()
+		{
+			Cluster.fork();
+		}, i * 100);
+	}
 
-    Cluster.on('exit', function (worker)
-    {
+	Cluster.on('exit', function (worker)
+	{
 	    Logger.warn('Worker #' + worker.id + ' died.');
 	    Cluster.fork();
 	});
