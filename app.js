@@ -22,6 +22,8 @@ global.Cluster = require('cluster');
 
 if (Cluster.isMaster)
 {
+	Logger.info('Master started.');
+
 	//initialize folder
 	(function()
 	{
@@ -36,9 +38,9 @@ if (Cluster.isMaster)
 		}
 	})();
 
+	//start child processes
 	var cpuCount = require('os').cpus().length;
-
-	Logger.info('Master started.');
+	cpuCount = Math.min(cpuCount, Config.Cluster.MaxProcesses);
 
 	for (var i = 0; i < cpuCount; i++)
 	{
@@ -48,7 +50,7 @@ if (Cluster.isMaster)
 		}, i * 100);
 	}
 
-	Cluster.on('exit', function (worker)
+	Cluster.on('exit', function(worker)
 	{
 	    Logger.warn('Worker #' + worker.id + ' died.');
 	    Cluster.fork();

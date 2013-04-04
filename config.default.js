@@ -1,12 +1,19 @@
 var Config = global.Config = {};
 
+Config.Cluster = 
+{
+	//how many child processes
+	MaxProcesses:	6, 
+}
+
 Config.Dir =
 {
 	//static file directory
-	Static:		BaseDir + '../wwwroot',
-	StaticCache: BaseDir + '../cache',
+	Static:			BaseDir + '../wwwroot',
+	StaticCache:	BaseDir + '../cache',
+	
 	//server runtime directory (will generate logs & cache)
-	Runtime:	BaseDir + '../runtime',
+	Runtime:		BaseDir + '../runtime',
 }
 
 Config.Port =
