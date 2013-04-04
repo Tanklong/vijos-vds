@@ -1,25 +1,7 @@
 global.BaseDir = __dirname + '/';
 global.LibDir = __dirname + '/lib/';
 require(BaseDir + 'config.js');
-
 //=================================
-//初始化目录
-
-(function()
-{
-	var fs = require('fs');
-	try
-	{
-		stats = fs.lstatSync(Config.Dir.Runtime);
-	}
-	catch (e)
-	{
-		fs.mkdirSync(Config.Dir.Runtime, 0755);
-	}
-})();
-
-//=================================
-
 global.dumpError = function(err)
 {
 	var msg = err.message;
@@ -31,23 +13,54 @@ global.dumpError = function(err)
 }
 
 process.on('uncaughtException', global.dumpError);
-
 //=================================
-
 var log = require(LibDir + 'log.js');
 global.Logger = log.create(log.INFO, Config.FileLocation.Log);
-
-Logger.info('Server started.');
-
 //=================================
 
-require(LibDir + 'extend.js');
-require(LibDir + 'server.js');
-require(LibDir + 'proxy.js');
+global.Cluster = require('cluster');
 
-//=================================
+if (Cluster.isMaster)
+{
+	//initialize folder
+	(function()
+	{
+		var fs = require('fs');
+		try
+		{
+			stats = fs.lstatSync(Config.Dir.Runtime);
+		}
+		catch (e)
+		{
+			fs.mkdirSync(Config.Dir.Runtime, 0755);
+		}
+	})();
 
-if (Config.Proxy.Enabled)
-	Proxy.initialize();
+    var cpuCount = require('os').cpus().length;
 
-Server.initialize();
+	Logger.info('Master started.');
+
+    for (var i = 0; i < cpuCount; i++)
+    {
+        Cluster.fork();
+    }
+
+    Cluster.on('exit', function (worker)
+    {
+	    Logger.warn('Worker #' + worker.id + ' died.');
+	    Cluster.fork();
+	});
+}
+else
+{
+	Logger.info('Worker #' + Cluster.worker.id + ' started.');
+
+	require(LibDir + 'extend.js');
+	require(LibDir + 'server.js');
+	require(LibDir + 'proxy.js');
+
+	if (Config.Proxy.Enabled)
+		Proxy.initialize();
+
+	Server.initialize();
+}
