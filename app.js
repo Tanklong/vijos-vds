@@ -1,7 +1,6 @@
 global.BaseDir = __dirname + '/';
 global.LibDir = __dirname + '/lib/';
 require(BaseDir + 'config.js');
-require(BaseDir + 'config.middleware.js');
 
 //=================================
 //初始化目录
