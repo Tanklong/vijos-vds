@@ -1,7 +1,7 @@
-vijos-dds
+vijos-vds
 =========
 
-vijos-dds is Vijos Distributed Data Service.
+vijos-vds is Vijos Data Service.
 
 - CDN
   

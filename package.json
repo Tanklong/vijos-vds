@@ -1,11 +1,12 @@
 {
-    "name": "vijos-dds",
+    "name": "vijos-vds",
     "author": "Breezewish",
     "main": "app.js",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "dependencies": {
         "http-proxy": "",
         "express": "",
+        "ejs": "",
         "express-minify": "",
         "gzippo": "",
         "spdy": ""
