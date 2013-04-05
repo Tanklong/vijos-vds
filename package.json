@@ -8,6 +8,10 @@
         "express": "",
         "express-minify": "",
         "ejs": "",
-        "spdy": ""
+        "spdy": "",
+		"mkdirp": "",
+		"async": "",
+		"mongoose": "",
+		"connect-mongo": ""
     }
 }

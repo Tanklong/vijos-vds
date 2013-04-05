@@ -9,7 +9,8 @@ Config.Cluster =
 Config.Dir =
 {
 	//static file directory
-	Static:			BaseDir + '../wwwroot',
+	CDNStatic:		BaseDir + '../wwwroot',
+	DYNStatic:		BaseDir + 'public',
 	StaticCache:	BaseDir + '../cache',
 	
 	//server runtime directory (will generate logs & cache)
@@ -21,6 +22,21 @@ Config.Port =
 	//in this case, our ReverseProxy on port 80 will pass requests to 81
 	HTTP:	81,
 	HTTPS:	443
+}
+
+//dynamic server configuration
+Config.Dynamic = 
+{
+	Prefix:			'/vds/',
+	CookieSecret:	'12345',
+	SessionMaxAge:	1800000,
+	DB:
+	{
+		db:			'vds',
+		host:		'127.0.0.1',
+		username:	'vijos',
+		password:	'vijos'
+	}
 }
 
 //static server configuration

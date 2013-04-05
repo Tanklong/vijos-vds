@@ -1,7 +1,12 @@
 global.BaseDir = __dirname + '/';
 global.LibDir = __dirname + '/lib/';
-require(BaseDir + 'config.js');
-//=================================
+
+var config = require(BaseDir + 'config.js');
+var log = require(LibDir + 'log.js');
+
+global.Logger = log.create(log.INFO, Config.FileLocation.Log);
+global.Cluster = require('cluster');
+
 global.dumpError = function(err)
 {
 	var msg = err.message;
@@ -13,59 +18,19 @@ global.dumpError = function(err)
 }
 
 process.on('uncaughtException', global.dumpError);
-//=================================
-var log = require(LibDir + 'log.js');
-global.Logger = log.create(log.INFO, Config.FileLocation.Log);
-//=================================
 
-global.Cluster = require('cluster');
-
-if (Cluster.isMaster)
+if (Config.Cluster.Enabled)
 {
-	Logger.info('Master started.');
-
-	//initialize folder
-	(function()
+	if (Cluster.isMaster)
 	{
-		var fs = require('fs');
-		try
-		{
-			stats = fs.lstatSync(Config.Dir.Runtime);
-		}
-		catch (e)
-		{
-			fs.mkdirSync(Config.Dir.Runtime, 0755);
-		}
-	})();
-
-	//start child processes
-	var cpuCount = require('os').cpus().length;
-	cpuCount = Math.min(cpuCount, Config.Cluster.MaxProcesses);
-
-	for (var i = 0; i < cpuCount; i++)
-	{
-		setTimeout(function()
-		{
-			Cluster.fork();
-		}, i * 100);
+		require(LibDir + 'cluster.master.js');
 	}
-
-	Cluster.on('exit', function(worker)
+	else
 	{
-	    Logger.warn('Worker #' + worker.id + ' died.');
-	    Cluster.fork();
-	});
+		require(LibDir + 'cluster.slave.js');
+	}
 }
 else
 {
-	Logger.info('Worker #' + Cluster.worker.id + ' started.');
-
-	require(LibDir + 'extend.js');
-	require(LibDir + 'server.js');
-	require(LibDir + 'proxy.js');
-
-	if (Config.Proxy.Enabled)
-		Proxy.initialize();
-
-	Server.initialize();
+	require(LibDir + 'cluster.slave.js');
 }
