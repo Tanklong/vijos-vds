@@ -1,5 +1,8 @@
 global.BaseDir = __dirname + '/';
-global.LibDir = __dirname + '/lib/';
+global.LibDir = BaseDir + 'lib/';
+global.CDir = BaseDir + 'controllers/';
+global.MDir = BaseDir + 'models/';
+global.VDir = BaseDir + 'views/';
 
 var config = require(BaseDir + 'config.js');
 var log = require(LibDir + 'log.js');

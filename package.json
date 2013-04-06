@@ -7,11 +7,12 @@
         "http-proxy": "",
         "express": "",
         "express-minify": "",
+        "express-partials": "",
         "ejs": "",
         "spdy": "",
-		"mkdirp": "",
-		"async": "",
-		"mongoose": "",
-		"connect-mongo": ""
+        "mkdirp": "",
+        "async": "",
+        "mongoose": "",
+        "connect-mongo": ""
     }
 }
