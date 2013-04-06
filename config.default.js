@@ -27,7 +27,7 @@ Config.Port =
 //dynamic server configuration
 Config.Dynamic = 
 {
-	Prefix:			'/vds/',
+	Prefix:			'/vds/static',
 	CookieSecret:	'12345',
 	SessionMaxAge:	1800000,
 	DB:
@@ -36,6 +36,17 @@ Config.Dynamic =
 		host:		'127.0.0.1',
 		username:	'vijos',
 		password:	'vijos'
+	},
+	Locals:
+	{
+		CDNprefix:	'//www.vijos.org',
+		uirevision:	1,
+		site:		'Vijos',
+		user:
+		{
+			face:	'/static/img/default_user.png',
+			name:	'Guest'
+		}
 	}
 }
 

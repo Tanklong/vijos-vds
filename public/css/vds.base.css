@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+h1, h2, h3, h4, form, html, body { margin:0;padding:0; }
+html, body { height:100%; }
+body { font-size:14px;color:#333; }
+body,input,select,textarea,button { font-family:"Lucida Grande", "Lucida", "Lucida Sans Unicode", "Lucida Sans", "Tahoma", "Segoe UI", "Verdana", "微软雅黑", "Microsoft YaHei", "宋体"; }
+
+img { border:0; }
+
+a,a:visited,a:link,a:active { color:#1D76C7;text-decoration:none; }
+a:hover { color:#3A93E2;text-decoration:underline; }
+
+
+/* UI Elements */
+
+.textbox { margin:0;box-sizing:content-box;height:16px;line-height:16px;outline:0;padding:4px;border:1px solid #DDD;border-radius:2px;transition:border .1s linear,box-shadow .2s linear;-webkit-transition:border .1s linear,box-shadow .2s linear;-moz-transition:border .1s linear,box-shadow .2s linear;-o-transition:border .1s linear,box-shadow .2s linear;-ie-transition:border .1s linear,box-shadow .2s linear; }
+.textbox:hover { border-color:#B0B0B0; }
+.textbox:focus { border-color:#DDD;box-shadow:0 0 5px #FFDF00; }
+
+textarea.textbox { width:200px;height:120px; }
+
