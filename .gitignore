@@ -1,5 +1,7 @@
 node_modules/
 start.bat
+npm_install.bat
 config.js
 Thumbs.db
 Desktop.ini
+npm-debug.log
