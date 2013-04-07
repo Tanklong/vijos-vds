@@ -1,19 +1,27 @@
 body { background:#FFF; }
 
-.container {  }
-.con-sidebar { border-top:3px solid #000;z-index:10px;position:fixed;width:150px;left:0;top:0;height:100%;background:#222; }
-.con-sidebar .face-container { position:relative;height:80px;margin-top:20px; }
-.con-sidebar .quota { margin-left:70px;text-align:center; }
-.con-sidebar .quota-n { color:#CCC;font-size:25px;line-height:60px; }
-.con-sidebar .quota-d { color:#AAA;font-size:14px;padding-left:3px; }
-.con-sidebar .outer { position:absolute;left:10px;top:0;width:60px;height:60px;display:inline-block; }
-.con-sidebar .face { width:60px;height:60px;border-radius:5px; }
-.con-sidebar .face-shadow { width:60px;height:60px;border-radius:5px;box-shadow:inset 0 0 3px #000;position:absolute;left:0;top:0;z-index:2; }
-.con-sidebar .nav-container { padding:10px 0; }
-.con-sidebar .nav-c { display:block;padding:11px 15px;color:#BBB;font-size:15px; }
-.con-sidebar .nav-c:hover { background:#333;color:#EEE;text-decoration:none; }
+.container { height:100%; }
+.con-sidebar { overflow:hidden;z-index:10;position:absolute;width:190px;left:0;top:0;height:100%;background:#222; }
 
-.con-main { margin-left:150px; }
+.con-sidebar .face-container { position:relative;padding:20px 0;border-top:3px solid #000; }
+	.con-sidebar .quota { margin-left:70px;text-align:center; }
+	.con-sidebar .quota-n { color:#CCC;font-size:25px;line-height:60px; }
+	.con-sidebar .quota-d { color:#AAA;font-size:14px;padding-left:3px; }
+	.con-sidebar .outer { position:relative;margin-left:10px;top:0;width:60px;height:60px;float:left; }
+	.con-sidebar .face { width:60px;height:60px;border-radius:5px; }
+	.con-sidebar .face-shadow { width:60px;height:60px;border-radius:5px;box-shadow:inset 0 0 3px #000;position:absolute;left:0;top:0;z-index:2; }
+	.con-sidebar .action { margin-left:75px;text-align:center; }
+	.con-sidebar .login { margin-top:20px; }
+	.con-sidebar .action a,
+	.con-sidebar .action a:active,
+	.con-sidebar .action a:visited { color:#CCC; }
+	.con-sidebar .action a:hover { color:#FFF; }
+
+.con-sidebar .nav-container { margin-bottom:10px; }
+	.con-sidebar .nav-c { display:block;padding:11px 15px;color:#BBB;font-size:15px; }
+	.con-sidebar .nav-c:hover { background:#333;color:#EEE;text-decoration:none; }
+
+.con-main { margin-left:190px;overflow-y:scroll;height:100%; }
 
 .top-logo { background:url(../img/bg.jpg) repeat;padding-left:20px;position:relative; }
 .top-logo .c { display:block;width:312px;height:100px;background:url(../img/logo.png) no-repeat; }

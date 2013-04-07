@@ -3,33 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
-<title>{%=title%} - {%=site%}</title>
+<title>{%=title%} - {%=Site%}</title>
 <script type="text/javascript">if(top.location!==self.location){top.location=self.location}else{if(top!==self){if(confirm("是否重新载入页面?")){top.location.reload()}}};</script>
-<link href="{%=CDNprefix%}/vds/static/css/vds.base.css?{%=uirevision%}" rel="stylesheet" type="text/css" />
-<link href="{%=CDNprefix%}/vds/static/css/main.css?{%=uirevision%}" rel="stylesheet" type="text/css" />
+<link href="{%=CDNLoc%}/vds/static/css/vds.base.css?{%=UIRev%}" rel="stylesheet" type="text/css" />
+<link href="{%=CDNLoc%}/vds/static/css/main.css?{%=UIRev%}" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div class="container">
 <div class="con-sidebar">
-
-<div class="face-container">
-<div class="outer"><img src="{%=user.face%}" alt="face" title="{%=user.name%}" class="face"/><div class="face-shadow"></div></div>
-<div class="quota"><div class="quota-n">0<span class="quota-d">MB</div></div></div>
-
-<div class="nav-container">
-<div class="nav-li"><a href="/" target="_self" class="nav-c">Vijos Home</a></div>
-</div>
-
-</div>
-
+	<div class="face-container">
+		<div class="outer"><img src="{%=User.Face%}" alt="face" title="{%=User.Name%}" class="face"/><div class="face-shadow"></div></div>
+		<div class="action">{% if (!User.IsLogin) { %}<div class="login"><a href="login" target="_self">登录</a></div>{% } %}</div>
+		<div class="clear"></div>
+	</div>
+	<div class="nav-container">
+		{% for (var i in Nav) { %}
+		<div class="nav-li"><a href="{%=Nav[i].link%}" target="_self" class="nav-c">{%=Nav[i].text%}</a></div>
+		{% } %}
+	</div>
 </div>
 <div class="con-main">
-<div class="top-colorize"><div class="color color1"></div><div class="color color2"></div><div class="color color3"></div><div class="color color4"></div><div class="color color5"></div></div>
-<div class="top-logo"><a class="c" href="/vds" target="_self">&nbsp;</a><div class="shadow"></div></div>
-<div class="con-content">
-{%=body%}
-</div>
+	<div class="top-colorize"><div class="color color1"></div><div class="color color2"></div><div class="color color3"></div><div class="color color4"></div><div class="color color5"></div></div>
+	<div class="top-logo"><a class="c" href="{%=BaseLoc%}" target="_self">&nbsp;</a><div class="shadow"></div></div>
+	<div class="con-content">
+		{%=body%}
+	</div>
 </div>
 </div>
 </body>

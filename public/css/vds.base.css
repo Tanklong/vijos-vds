@@ -10,6 +10,8 @@ img { border:0; }
 a,a:visited,a:link,a:active { color:#1D76C7;text-decoration:none; }
 a:hover { color:#3A93E2;text-decoration:underline; }
 
+.clear:after { content:"\200B";display:block;height:0;clear:both; }
+.clear { *zoom:1; }
 
 /* UI Elements */
 
