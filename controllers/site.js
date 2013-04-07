@@ -1,4 +1,10 @@
-exports.index = function (req, res, next)
+exports.index = function(req, res, next)
 {
-	res.render('index', {title: 'VDS'});
+	if (req.url.lastIndexOf('/') !== req.url.length - 1)
+	{
+		res.redirect(301, Config.Dynamic.Locals.BaseLoc + '/');
+		return;
+	}
+
+	res.render('index', {title: 'Data Service'});
 }

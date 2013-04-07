@@ -28,24 +28,30 @@ Config.Port =
 Config.Dynamic = 
 {
 	Prefix:			'/vds/static',
-	CookieSecret:	'12345',
+	CookieSecret:	'11111',
 	SessionMaxAge:	1800000,
 	DB:
 	{
-		db:			'vds',
+		db:			'vijos',
 		host:		'127.0.0.1',
-		username:	'vijos',
-		password:	'vijos'
+		username:	'11111',
+		password:	'11111'
 	},
 	Locals:
 	{
-		CDNprefix:	'//www.vijos.org',
-		uirevision:	1,
-		site:		'Vijos',
-		user:
+		BaseLoc:	'/vds', 
+		CDNLoc:		'//www.vijos.org',
+		UIRev:		1,
+		Nav:
+		[
+			{text: '数据服务首页', link: '/vds/'}
+		],
+		Site:		'Vijos',
+		User:
 		{
-			face:	'/static/img/default_user.png',
-			name:	'Guest'
+			Face:		'/static/img/default_user.png',
+			Name:		'Guest',
+			IsLogin:	false
 		}
 	}
 }
