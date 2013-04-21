@@ -30,6 +30,7 @@ Config.Dynamic =
 	Prefix:			'/vds/static',
 	CookieSecret:	'11111',
 	SessionMaxAge:	1800000,
+	Expire:			604800000,
 	DB:
 	{
 		db:			'vijos',
@@ -59,6 +60,7 @@ Config.Dynamic =
 //static server configuration
 Config.Static =
 {
+	Expire:			604800000,
 	NotFound:
 	{
 		//if enabled, requests will be redirected if notfound
